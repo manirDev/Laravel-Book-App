@@ -11,7 +11,8 @@ class Book extends Model
     protected $fillable =[
         'name',
         'description',
-        'category'
+        'category',
+        'image'
     ];
     //protected $guarded =[];
 }

@@ -13,7 +13,7 @@
                     Edit the Book
                 </div>
                 <div class="card-body">
-                    <form action="{{route('book.update', ['id'=>$book->id])}}" method="post">
+                    <form action="{{route('book.update', ['id'=>$book->id])}}" method="post"enctype="multipart/form-data">
                         @csrf
                         <label>Name of book</label>
                         <input type="text" name="name" value="{{$book->name}}" class="form-control">
@@ -39,6 +39,16 @@
                             <span class="text-danger">{{$errors->first('category')}}</span>
                         @endif
                         <br>
+                        <label>Name of book</label>
+                        <input type="file" name="image"  class="form-control">
+                        @if($book->image)
+                            <img src="{{Storage::url($book->image)}}" style="height: 50px; width: 50px"/>
+                        @endif
+                        @if($errors->has('image'))
+                            <span class="text-danger">{{$errors->first('image')}}</span>
+                        @endif
+                        <br>
+
                         <input type="submit" value="Submit" class="btn btn-primary">
                     </form>
                 </div>

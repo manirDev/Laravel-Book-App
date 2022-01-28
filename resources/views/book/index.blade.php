@@ -27,18 +27,23 @@
                         <tbody>
                         @foreach($books as $book)
                             <tr>
-                                <th scope="row">{{$book->id}}</th>
+                                <td>
+                                    @if($book->image)
+                                        <img src="{{Storage::url($book->image)}}" style="height: 60px; width: 70px"/>
+                                    @endif
+                                </td>
                                 <td>{{$book->name}}</td>
                                 <td>{{$book->description}}</td>
                                 <td>{{$book->category}}</td>
                                 <td>
                                     <a href="{{route('book.edit', ['id'=>$book->id])}}">
-                                        <button class="btn btn-info">Edit</button>
+                                        <button class="btn btn-info"> <i class="fas fa-edit text-white"></i></button>
                                     </a>
                                 </td>
                                 <td>
                                     <a href="{{route('book.delete', ['id'=>$book->id])}}" onclick="return confirm('Delete! Are you sure?')">
-                                        <button class="btn btn-danger">Destroy</button>
+                                        <button class="btn btn-danger"> <i class="fas fa-trash btn-danger"></i></button>
+
                                     </a>
                                 </td>
                             </tr>

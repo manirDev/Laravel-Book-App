@@ -13,7 +13,7 @@
                     Create a new Book
                 </div>
                 <div class="card-body">
-                    <form action="{{route('book.store')}}" method="post">
+                    <form action="{{route('book.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <label>Name of book</label>
                         <input type="text" name="name" placeholder="name of the book" class="form-control">
@@ -37,6 +37,12 @@
                         </select>
                         @if($errors->has('category'))
                             <span class="text-danger">{{$errors->first('category')}}</span>
+                        @endif
+                        <br>
+                        <label>Name of book</label>
+                        <input type="file" name="image" placeholder="image of the book" class="form-control">
+                        @if($errors->has('image'))
+                            <span class="text-danger">{{$errors->first('image')}}</span>
                         @endif
                         <br>
                         <input type="submit" value="Submit" class="btn btn-primary">
